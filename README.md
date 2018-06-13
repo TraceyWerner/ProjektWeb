@@ -63,7 +63,7 @@ To-Do Franziska:
 HTML Startseite
 Backfee Logo
 Kategorie Bilder anfangen
-### To-Do Miri und Jacomo:
+#### To-Do Miri und Jacomo:
 HTML Grundgerüst erstellen
 ### To-Do Tracey:
 Datenbank Grundgerüst mit Beispielen zum Testen

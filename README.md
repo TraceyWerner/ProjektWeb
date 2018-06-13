@@ -58,7 +58,7 @@ Beginn der praktischen Umsetzung
 praktische Umsetzung
 
 #### To-Do Franziska:
-HTML Startseite,
+HTML Startseite (angefangen),
 =) Backfee Logo,
 =) Kategorie Bilder anfangen
 #### To-Do Miri und Jacomo:
@@ -70,6 +70,7 @@ Datenbank Grundgerüst mit Beispielen zum Testen
 HTML fertigstellen
 
 #### To-Do Franziska:
+HTML Startseite beenden,
 Kategorie Bilder weitermachen,
 Favicon erstellen,
 CSS

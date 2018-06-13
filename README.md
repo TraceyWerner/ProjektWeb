@@ -40,7 +40,7 @@ Rezeptsammlung
 
 =) Besprechung der Skizzen
 
-30.5
+## 30.5
 
 =) Reinzeichnung der Skizzen (für Vortrag)
 
@@ -58,7 +58,8 @@ Beginn der praktischen Umsetzung
 
 praktische Umsetzung
 
-### To-Do Franziska:
+To-Do Franziska:
+----------------
 HTML Startseite
 Backfee Logo
 Kategorie Bilder anfangen

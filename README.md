@@ -54,13 +54,13 @@ Vortrag erfolgreich gehalten
 
 Beginn der praktischen Umsetzung
 
-## bis 13.6
+## 13.6
 praktische Umsetzung
 
 #### To-Do Franziska:
 HTML Startseite
-Backfee Logo
-Kategorie Bilder anfangen
+=) Backfee Logo
+=) Kategorie Bilder anfangen
 #### To-Do Miri und Jacomo:
 HTML Grundgerüst erstellen
 #### To-Do Tracey:
@@ -68,6 +68,15 @@ Datenbank Grundgerüst mit Beispielen zum Testen
 
 ## bis 20.6
 HTML fertigstellen
+
+#### To-Do Franziska:
+Kategorie Bilder weitermachen
+Favicon erstellen
+CSS
+#### To-Do Miri und Jacomo:
+
+#### To-Do Tracey:
+
 
 ## bis 27.6
 an CSS, PHP, Datenbank arbeiten

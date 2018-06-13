@@ -58,8 +58,8 @@ Beginn der praktischen Umsetzung
 praktische Umsetzung
 
 #### To-Do Franziska:
-HTML Startseite
-=) Backfee Logo
+HTML Startseite,
+=) Backfee Logo,
 =) Kategorie Bilder anfangen
 #### To-Do Miri und Jacomo:
 HTML Grundgerüst erstellen
@@ -70,8 +70,8 @@ Datenbank Grundgerüst mit Beispielen zum Testen
 HTML fertigstellen
 
 #### To-Do Franziska:
-Kategorie Bilder weitermachen
-Favicon erstellen
+Kategorie Bilder weitermachen,
+Favicon erstellen,
 CSS
 #### To-Do Miri und Jacomo:
 

@@ -66,6 +66,7 @@ HTML Grundgerüst erstellen
 #### To-Do Tracey:
 Datenbank Grundgerüst mit Beispielen zum Testen
 
+
 ## bis 20.6
 HTML fertigstellen
 
@@ -82,14 +83,40 @@ CSS
 ## bis 27.6
 an CSS, PHP, Datenbank arbeiten
 
+#### To-Do Franziska:
+
+#### To-Do Miri und Jacomo:
+
+#### To-Do Tracey:
+
+
 ## bis 4.7
 CSS, PHP, Datenbank fertigstellen
+
+#### To-Do Franziska:
+
+#### To-Do Miri und Jacomo:
+
+#### To-Do Tracey:
+
 
 ## bis 11.7
 Projekt fertigstellen, Projektdokumentation beginnen
 
+#### To-Do Franziska:
+
+#### To-Do Miri und Jacomo:
+
+#### To-Do Tracey:
+
 ## bis 18.7
 Projektdokumentation fertigstellen
+
+#### To-Do Franziska:
+
+#### To-Do Miri und Jacomo:
+
+#### To-Do Tracey:
 
 ## bis 25.7
 Vorstellung des Projektes

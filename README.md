@@ -78,7 +78,9 @@ CSS
 #### To-Do Miri und Jacomo:
 
 #### To-Do Tracey:
-
+DB befüllen, 
+SQL Abfragen für login/registrieren erstellen,
+SQL Abfragen für favoriten/planer erstellen
 
 ## bis 27.6
 an CSS, PHP, Datenbank arbeiten

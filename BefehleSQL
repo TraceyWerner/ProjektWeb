@@ -1,4 +1,15 @@
-SQL Befehle
+Verbindung mit der DB :
+<?php
+$db = mysqli_connect("pc18.beuth-hochschule.de", "sose18_web_projekt_1", "projekt", " sose18_web_projekt_1");
+?>
+
+<?php
+$db = mysqli_connect("pc18.beuth-hochschule.de", "sose18_web_projekt_1", "projekt", "sose18_web_projekt_1");
+if(!$db)
+{
+  exit("Verbindungsfehler: ".mysqli_connect_error());
+}
+?>
   
                                       Befehle für login/registrieren 
                                       

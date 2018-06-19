@@ -1,0 +1,55 @@
+SQL Befehle
+  
+                                      Befehle für login/registrieren 
+                                      
+ 1) Checken ob Anmeldung des Users X mit dem Passwort Y korrekt ist
+  SELECT login.name FROM login WHERE login.name = X AND login.passwort = Y;
+  
+ 2) Vergessenes Passwort wiederherstellen vom User X mit der Antwort Y 
+  SELECT login.passwort FROM login WHERE login.antwort = Y AND login.name = X;
+  
+ 3) Mit altem Passwort Y von angemeldeten User X neues Passwort Z ändern
+  var = SELECT login.passwort FROM login WHERE userID = X;
+  UPDATE login Set login.passwort = 'Z' WHERE login.name = X AND var = Y;
+  
+ 4) Neuen User X  mit Passwort Y, der Frage F und der Antwort Z registrieren
+  INSERT INTO login (name, passwort, frage, antwort) VALUES (X, Y, F, Z);
+  
+ 5) Frage des Users X einblenden bei Passwort Wiederherstellung
+  SELECT frage FROM login WHERE name = X;
+  
+ 6) Checken ob Person X schon existiert in der DB
+  var = SELECT name FROM login WHERE name = X;
+  if (var = NULL)
+    mache Punkt 4);
+    
+                                      Befehle für favoriten/planer
+                                      
+1) Zeige alle Favoriten des Users X:
+  SELECT rezepte.* FROM rezepte 
+  JOIN favoriten ON rezepte.rezeptID = favoriten.rezepte_rezeptID 
+  JOIN login ON login.userID = favoriten.login_userID
+  WHERE login.userID = X;
+  
+2) Zeige alle rezepte von User X im Planer Y:
+  SELEST rezepte.* FROM rezepte
+  JOIN planer_hat_rezepte ON planer_hat_rezepte.rezepte_rezeptID = rezepte.rezeptID
+  JOIN planer ON planer.login_userID = planer_hat_rezepte.planer_login_userID
+  JOIN login ON login.userID = planer.login_userID
+  WHERE login.userID = X AND planer.liste = Y;
+  
+ 3) Zeige alle planer von User X
+  SELECT planer.liste FROM planer 
+  JOIN login ON planer.login_userID = login.userID
+  WHERE login.userID = X;
+  
+ 4) User Y erstellt einen neuen Planer X
+  INSERT INTO planer (login_userID, liste) VALUES (Y, X);
+  
+ 5) User X nimmt Rezept Y in einen Planer auf.
+  INSERT INTO planer_hat_rezepte (planer_login_userID, rezepte_rezeptID) VALUES (X, Y);
+ 
+ 
+ 
+ 
+ 

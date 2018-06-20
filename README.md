@@ -67,7 +67,7 @@ HTML Grundgerüst erstellen
 Datenbank Grundgerüst mit Beispielen zum Testen
 
 
-## bis 20.6
+## 20.6
 HTML fertigstellen
 
 #### To-Do Franziska:
@@ -88,6 +88,9 @@ SQL Abfragen für favoriten/planer erstellen
 an CSS, PHP, Datenbank arbeiten
 
 #### To-Do Franziska:
+HTML/CSS Startseite, 
+Farbcodes raussuchen, 
+Kategoriebilder
 
 #### To-Do Miri:
 

@@ -75,7 +75,9 @@ HTML Startseite beenden,
 Kategorie Bilder weitermachen,
 Favicon erstellen,
 CSS
-#### To-Do Miri und Jacomo:
+#### To-Do Miri:
+HTML persönliche Seiten fertig stellen
+#### To-Do Jacomo:
 
 #### To-Do Tracey:
 DB befüllen, 
@@ -87,7 +89,9 @@ an CSS, PHP, Datenbank arbeiten
 
 #### To-Do Franziska:
 
-#### To-Do Miri und Jacomo:
+#### To-Do Miri:
+
+#### To-Do Jacomo:
 
 #### To-Do Tracey:
 
@@ -97,7 +101,9 @@ CSS, PHP, Datenbank fertigstellen
 
 #### To-Do Franziska:
 
-#### To-Do Miri und Jacomo:
+#### To-Do Miri:
+
+#### To-Do Jacomo:
 
 #### To-Do Tracey:
 
@@ -107,7 +113,9 @@ Projekt fertigstellen, Projektdokumentation beginnen
 
 #### To-Do Franziska:
 
-#### To-Do Miri und Jacomo:
+#### To-Do Miri:
+
+#### To-Do Jacomo:
 
 #### To-Do Tracey:
 
@@ -116,7 +124,9 @@ Projektdokumentation fertigstellen
 
 #### To-Do Franziska:
 
-#### To-Do Miri und Jacomo:
+#### To-Do Miri:
+
+#### To-Do Jacomo:
 
 #### To-Do Tracey:
 

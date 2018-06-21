@@ -17,20 +17,19 @@ if(!$db)
   SELECT login.name FROM login WHERE login.name = X AND login.passwort = Y;
   
  2) Vergessenes Passwort wiederherstellen vom User X mit der Antwort Y 
-  SELECT login.passwort FROM login WHERE login.antwort = Y AND login.name = X;
+  SELECT login.passwort FROM login WHERE login.antwort = 'Y' AND login.name = 'X';
   
  3) Mit altem Passwort Y von angemeldeten User X neues Passwort Z ändern
-  var = SELECT login.passwort FROM login WHERE userID = X;
-  UPDATE login Set login.passwort = 'Z' WHERE login.name = X AND var = Y;
+  UPDATE login Set login.passwort = 'Z' WHERE login.name = 'X' AND login.passwort = 'Y';
   
  4) Neuen User X  mit Passwort Y, der Frage F und der Antwort Z registrieren
   INSERT INTO login (name, passwort, frage, antwort) VALUES (X, Y, F, Z);
   
  5) Frage des Users X einblenden bei Passwort Wiederherstellung
-  SELECT frage FROM login WHERE name = X;
+  SELECT frage FROM login WHERE name = 'X';
   
  6) Checken ob Person X schon existiert in der DB
-  var = SELECT name FROM login WHERE name = X;
+  var = SELECT name FROM login WHERE name = 'X';
   if (var = NULL)
     mache Punkt 4);
     
@@ -39,28 +38,61 @@ if(!$db)
 1) Zeige alle Favoriten des Users X:
   SELECT rezepte.* FROM rezepte 
   JOIN favoriten ON rezepte.rezeptID = favoriten.rezepte_rezeptID 
-  JOIN login ON login.userID = favoriten.login_userID
-  WHERE login.userID = X;
+  JOIN login ON login.name = favoriten.login_name
+  WHERE login.name = 'X';
   
-2) Zeige alle rezepte von User X im Planer Y:
-  SELEST rezepte.* FROM rezepte
+2) Zeige alle rezepte von User X im Planer Y: 
+  SELECT rezepte.* FROM rezepte
   JOIN planer_hat_rezepte ON planer_hat_rezepte.rezepte_rezeptID = rezepte.rezeptID
-  JOIN planer ON planer.login_userID = planer_hat_rezepte.planer_login_userID
-  JOIN login ON login.userID = planer.login_userID
-  WHERE login.userID = X AND planer.liste = Y;
+  JOIN planer ON planer.login_name = planer_hat_rezepte.planer_login_name
+  JOIN login ON login.name = planer.login_name
+  WHERE login.name = 'X' AND planer.liste = 'Y';
   
  3) Zeige alle planer von User X
   SELECT planer.liste FROM planer 
-  JOIN login ON planer.login_userID = login.userID
-  WHERE login.userID = X;
+  JOIN login ON planer.login_name = login.name
+  WHERE login.name = 'X';
   
  4) User Y erstellt einen neuen Planer X
-  INSERT INTO planer (login_userID, liste) VALUES (Y, X);
+  INSERT INTO planer (login_name, liste) VALUES ('Y', 'X');
   
  5) User X nimmt Rezept Y in einen Planer auf.
-  INSERT INTO planer_hat_rezepte (planer_login_userID, rezepte_rezeptID) VALUES (X, Y);
+  INSERT INTO planer_hat_rezepte (planer_login_name, rezepte_rezeptID) VALUES ('X', 'Y');
+  
+  
  
  
+                                   Befehle für rezepte/zutaten/kategorie
+                                      
+ 6) Zeige alle Rezepte die es in der DB gibt.
+  SELECT rezepte.* FROM rezepte;
+  
+ 7) Zeige alle Zutaten des Rezeptes X.
+  SELECT zutaten.name, einheiten.name, rezepte_hat_zutaten.menge FROM rezepte 
+  JOIN rezepte_hat_zutaten ON rezepte_hat_zutaten.rezepte_rezeptID = rezepte.rezeptID
+  JOIN zutaten ON zutaten.zutatenID = rezepte_hat_zutaten.zutaten_zutatenID
+  JOIN einheiten ON einheiten.ID = zutaten.einheiten_ID
+  WHERE rezepte.rezeptID = X;
  
+ 8) Zeige die Kategorien des Rezeptes X
+  SELECT kategorie.name FROM kategorie 
+  JOIN rezepte_hat_kategorie ON rezepte_hat_kategorie.kategorie_kategorieID = kategorie.kategorieID
+  JOIN rezepte ON rezepte.rezeptID = rezepte_hat_kategorie.rezepte_rezeptID
+  WHERE rezepte.rezeptID = X;
+  
+ 9) Zeige alle Rezepte an die in der Kategorie X vorkommen
+  SELECT rezepte.* FROM rezepte
+  JOIN rezepte_hat_kategorie ON rezepte_hat_kategorie.kategorie_kategorieID = rezepte.rezeptID
+  JOIN kategorie ON rezepte_hat_kategorie.kategorie_kategorieID = kategorie.kategorieID
+  WHERE kategorie.name = 'X';
  
- 
+10) User Z erstellt ein neues Rezept X mit Kategorie Y, Zutaten A,B 
+  INSERT INTO rezepte (bild,name,ersteller,zubereitung) VALUES (NULL, 'X','Z', 'Hier steht wie es Zubereitet wird');
+  var = SELECT max(rezeptID) FROM rezepte;
+  INSERT INTO rezepte_hat_kategorie (rezepte_rezeptID,kategorie_kategorieID) VALUES (var,Y);
+  
+  
+  
+  
+  
+  

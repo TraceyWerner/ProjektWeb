@@ -97,6 +97,8 @@ Kategoriebilder
 #### To-Do Jacomo:
 
 #### To-Do Tracey:
+DB einbinden,
+SQL Abfragen erstellen (rezepte),
 
 
 ## bis 4.7

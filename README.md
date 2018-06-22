@@ -76,7 +76,7 @@ Kategorie Bilder weitermachen,
 Favicon erstellen,
 CSS
 #### To-Do Miri:
-HTML persönliche Seiten fertig stellen
+HTML persönliche Seiten erstellen
 #### To-Do Jacomo:
 
 #### To-Do Tracey:
@@ -93,7 +93,7 @@ Farbcodes raussuchen,
 Kategoriebilder
 
 #### To-Do Miri:
-
+HTML fertig haben
 #### To-Do Jacomo:
 
 #### To-Do Tracey:

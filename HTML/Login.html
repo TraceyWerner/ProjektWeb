@@ -94,26 +94,90 @@ input[type=text], input[type=password] {
 
       <label for="psw"><b>Passwort</b></label>
       <input type="text" placeholder="Passwort eingeben" name="psw" required>
-        
+      
+      <p></p>
+      <button type="submit">Login</button>
+      <p></p>
+      </div>
+
+      <div class="container" style="background-color:#ffcc00">
+      <p> Sie haben Ihr Passwort vergessen? </p>
+      <button onclick="document.getElementById('id02').style.display='block'" id="PWverg">Passwort ändern</button> 
+      </div> 
+
+      <div class="container" style="background-color:#2EFE9A">
+      <p> Sie haben noch kein Konto bei Backfee? </p>
+      <button onclick="document.getElementById('id03').style.display='block'" >Hier kostenlos Registrieren</button>
+      </div>
+  </form>
+</div>
+
+
+<div id="id02" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <p> Sie haben Ihr Passwort vergessen? </p>
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Username eintragen" name="uname" required>
+      <p></p>
+
+      <label for="sicher"><b>Ihre Lieblingsfarbe?</b></label>
+     <input type="text" placeholder="Sicherheitsfrage beantworten" name="sifrage" required>
+      <p></p>
+
+      <label for="pswNeu"><b>Neues Passwort</b></label>
+      <input type="text" placeholder="Passwort eingeben" name="pswN" required>
+      <p></p>
+
+      <label for="pswbest"><b>Passwort bestätigen</b></label>
+      <input type="text" placeholder="Passwort bestätigen" name="pswB" required>
+      <p></p>
+      <button type="submit">Passwort ändern</button>
+    </div> 
+  </form>
+</div>
+
+<div id="id03" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <p> Bitte geben Sie hier Ihre Daten ein: </p>
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Username eintragen" name="uname" required>
+      <p></p>
+
+      <label for="sicher"><b>Ihre Lieblingsfarbe?</b></label>
+     <input type="text" placeholder="Sicherheitsfrage beantworten" name="sifrage" required>
+      <p></p>
+
+      <label for="pswNeu"><b>Passwort</b></label>
+      <input type="text" placeholder="Passwort eingeben" name="pswN" required>
+      <p></p>
+
       <label>
         <input type="checkbox" checked="checked" name="remember"> AGB's akzeptiert
       </label>
       <p></p>
-      <button type="submit">Login</button>
-      <p></p>
-      <span class="psw" id="link"> <a href="#">Passwort vergessen?</a>  </span>
-    </div>
-
-      <div class="container" style="background-color:#2EFE9A">
-      <p> Sie haben noch kein Konto bei Backfee? </p>
-      <span class="reg" id="link"> <a href="#">Hier kostenlos registrieren?</a>  </span>
-      </div>
+    
+      <button type="submit">kostenlos Registrieren</button>
+    </div>  
   </form>
 </div>
 
 <script>
 // Get the modal
 var modal = document.getElementById('id01');
+var modal = document.getElementById('id02');
+var modal = document.getElementById('id03');
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {

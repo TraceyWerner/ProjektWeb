@@ -3,7 +3,7 @@
 	<head>
 		<title>Backfee</title>
 		<meta name="author" content="Miriam Lang">
-		<meta name="coauthor" content="">
+		<meta name="coauthor" content="Tracey Werner">
 		<meta name="description" content="Backfee persönliche Seite - Startseite">
 		<meta name="keywords" content="Backfee, persönlich">
 		<meta name="date" content="13.06.2018">
@@ -30,13 +30,15 @@
 			margin-top: 6em;
 			}
 		main {
-			text-decoration:none
 			margin-left: 15em;
 			margin-top: 7.5em;
 			}
 		}
 		</style>
+
 	</head>
+
+	<body>
 
 	<header>
 		<h1>Backfee</h1> <!-- wird durch Logo ersetzt  -->
@@ -51,7 +53,7 @@
 			<tr>
 				<th>Rezepte</th>
 				<th>Partyplaner</th>
-				<th>Willkommen, "USER123" </th> <!-- immer aktuellen User  -->
+				<th>Willkommen, <?php echo $_SESSION['name']."!" ?> </th>
 			</tr>
 		</table>
 
@@ -60,10 +62,10 @@
 	<nav>
 		<h2>Persönliche Seite</h2> 
 		<ul> 
-			<li><a href="C:\xampp\htdocs\Webkurs\Projekt\HTML\PWaendern.html">Passwort ändern</a></li> <!-- Link aktualisieren  -->
-			<li><a href="C:\xampp\htdocs\Webkurs\Projekt\HTML\Rezepterstellen.html">Rezepte erstellen</a></li>
-			<li><a href="C:\xampp\htdocs\Webkurs\Projekt\HTML\MeineRezepte.html">Meine Rezepte</a></li>
-			<li><a href="C:\xampp\htdocs\Webkurs\Projekt\HTML\Favoriten.html">Favoriten</a></li>
+			<li><a href="PWaendern.php">Passwort ändern</a></li>
+			<li><a href="Rezepterstellen.php">Rezepte erstellen</a></li>
+			<li><a href="MeineRezepte.html">Meine Rezepte</a></li> <!-- noch nicht da  -->
+			<li><a href="Favoriten.html">Favoriten</a></li> <!-- noch nicht da  -->
 			<li><a href="">Logout</a></li>
 		</ul>
 	</nav>
@@ -75,4 +77,5 @@
 			<p> Viel Spaß! </p>
 		</article>
 	</main>
+	</body>
 </html>

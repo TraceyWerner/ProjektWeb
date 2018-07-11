@@ -9,9 +9,6 @@ if (mysqli_connect_errno()) {
 	exit();
 }
 
-// Beispiel: Serverinfos ausgeben // braucht man nicht unbedingt für das Projekt
-#printf("Server version: %s<br/><br/>", $mysqli->server_info);
-
 session_start();
 
 // **************************
@@ -33,12 +30,6 @@ function einloggen($name,$passwort) {
 		}
 
 	// Ergebniszwischenspeicher freigeben
-		if (log) {
-			printf("Sie haben sich eingeloggt %s !<br/>", $row["name"],@$row["passwort"], @$row["frage"], @$row["antwort"]);
-		}
-		else {
-			printf("Passwort und Nutzername stimmen nicht überein !");
-		}
 	$result->close();
 	}
 }// einloggen
@@ -85,9 +76,9 @@ function passwortWiederherstellen($Name,$Antwort) {
 // Passwort des Users ändern
 // **************************
 
-function passwortAendern($name, $passwortNeu, $passwort) {
+function passwortAendernLog($name, $passwortNeu, $passwort) {
 	global $mysqli;
- // Mit altem Passwort Y von angemeldeten User X neues Passwort Z ändern
+ 	// Mit altem Passwort Y von angemeldeten User X neues Passwort Z ändern
 
 	$query = "UPDATE login Set passwort = '$passwortNeu' WHERE name = '".$mysqli->real_escape_string($name)."' AND passwort = '".$mysqli->real_escape_string($passwort)."'";
 
@@ -113,7 +104,25 @@ function passwortAendern($name, $passwortNeu, $passwort) {
 	}
 	else 
 		echo "Bitte geben Sie ein anderes Passwort ein!<br>";
-}//passwortAendern
+}//passwortAendernLog
+
+
+function passwortAendern($name, $antwort, $passwortNeu, $passwort) {
+	global $mysqli;
+	$query = "UPDATE login SET passwort = '$passwortNeu' WHERE name = '".$mysqli->real_escape_string($name)."' AND antwort = '".$mysqli->real_escape_string($antwort)."'";
+
+	if($passwortNeu == $passwort) {
+
+		if($result = $mysqli->query($query)) {
+			echo "Ihr Passwort wurde erfolgreich geändert";
+		}
+		else
+			echo "Bitte prüfe noch einmal deine Eingaben";
+	}
+	else 
+		echo "Die passwörter müssen übereinstimmen!";
+
+} // passwortAendern
 
 
 // **********************************
@@ -166,23 +175,41 @@ function favoriten() {
 }// favoriten
 
 
-if($_REQUEST['uname'] && $_REQUEST['psw'] ) {
-	einloggen($_REQUEST['uname'],$_REQUEST['psw']);
-	//if($log) {
-		include("startseite.php");
-	//}
+
+
+
+
+// MAIN
+
+if($_REQUEST['unameE'] && $_REQUEST['pswE'] ) {
+	einloggen($_REQUEST['unameE'],$_REQUEST['pswE']);
+	$_SESSION['name'] = $_REQUEST['unameE'];
+	include("startseite_pers.php");
+}
+else {
+	$frage = "Was ist deine Lieblingsfarbe?";
+	if($_REQUEST['unameR'] && $_REQUEST['sifrageR'] && $_REQUEST['pswNR']) {
+		registrieren($_REQUEST['unameR'], $_REQUEST['pswNR'],$frage, $_REQUEST['sifrageR']);
+		include("startseite_pers.php");
+	}
+	else {
+		if($_REQUEST['uname'] && $_REQUEST['passwort'] && $_REQUEST['altesPasswort']) {
+			passwortAendernLog($_REQUEST['uname'], $_REQUEST['passwort'], $_REQUEST['altesPasswort']);
+		}
+		else {
+			if($_REQUEST['unameV'] && $_REQUEST['sifrageV'] && $_REQUEST['pswNV'] && $_REQUEST['pswBV']) {
+				passwortAendern($_REQUEST['unameV'], $_REQUEST['sifrageV'], $_REQUEST['pswNV'], $_REQUEST['pswBV']);
+				include("startseite_pers.php");
+			}
+		}
+	}
 }
 
-$frage = "Was ist deine Lieblingsfarbe?";
-if($_REQUEST['uname'] && $_REQUEST['sifrage'] && $_REQUEST['pswN']) {
-	registrieren($_REQUEST['uname'], $_REQUEST['pswN'],$frage, $_REQUEST['sifrage']);
-	include("startseite.php");
-}
-// WIP!
-//if($_REQUEST['uname'] && $_REQUEST['sifrage'] && $_REQUEST['pswN'] && $_REQUEST['pswB']) {
-//	passwortWiederherstellen($_REQUEST['uname'],$_REQUEST['sifrage']);
-//	include("startseite.php");
-//}
+
+
+
+
+
 
 /*
 	

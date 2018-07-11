@@ -43,6 +43,8 @@
 		</style>
 	</head>
 
+      <body>
+
 	<header>
 		<h1>Backfee</h1> <!-- wird durch Logo ersetzt  -->
 		
@@ -56,7 +58,7 @@
 			<tr>
 				<th>Rezepte</th>
 				<th>Partyplaner</th>
-				<th>Willkommen, "USER123" </th> <!-- immer aktuellen User  -->
+				<th>Willkommen, <?php echo $_SESSION['name']."!" ?> </th>
 			</tr>
 		</table>
 
@@ -65,11 +67,11 @@
 	<nav>
 		<h2>Persönliche Seite</h2> 
 		<ul> 
-			<li><a href="PWaendern.html">Passwort ändern</a></li> <!-- Link aktualisieren  -->
-			<li><a href="Rezepterstellen.html"> <strong> Rezepte erstellen</strong></a></li>
-			<li><a href="MeineRezepte.html">Meine Rezepte</a></li>
-			<li><a href="Favoriten.html">Favoriten</a></li>
-			<li><a href="">Logout</a></li>
+			<li><a href="PWaendern.php">Passwort ändern</a></li>
+                  <li><a href="Rezepterstellen.php"> <strong> Rezepte erstellen</strong></a></li>
+                  <li><a href="MeineRezepte.html">Meine Rezepte</a></li>
+                  <li><a href="Favoriten.html">Favoriten</a></li>
+                  <li><a href="">Logout</a></li>
 		</ul>
 	</nav>
 
@@ -231,4 +233,5 @@
 
 		</article>
 	</main>
+      </body>
 </html>

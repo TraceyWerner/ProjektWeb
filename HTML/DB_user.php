@@ -168,13 +168,11 @@ function favoriten() {
 
 function logout($name) {
 	global $mysqli;
-	global $log;
 
-	if($log) {
-		$log = false;
-		$_SESSION["userName"] ="";
-		echo "Auf wiedersehen";
-	}
+	$_SESSION["userName"] ="";
+	$_SESSION["name"] = "";
+	echo "Auf wiedersehen";
+
 }
 
 

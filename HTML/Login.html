@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="author-LoginButton" content="Miriam Lang">
-    <meta name="coauthor" content="">
+    <meta name="coauthor" content="Tracey Werner">
     <meta name="description" content="LoginButton-Feld">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -79,21 +79,22 @@ input[type=text], input[type=password] {
 </head>
 
 <body>
+<php include ("DB_user.php")>;
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="/action_page.php">
+  <form class="modal-content animate" action="DB_user.php">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
     </div>
 
     <div class="container">
       <label for="username"><b>Username</b></label>
-      <input type="text" placeholder="Username eintragen" name="uname" required>
+      <input type="text" placeholder="Username eintragen" name="unameE" required>
 
       <label for="psw"><b>Passwort</b></label>
-      <input type="text" placeholder="Passwort eingeben" name="psw" required>
+      <input type="text" placeholder="Passwort eingeben" name="pswE" required>
       
       <p></p>
       <button type="submit">Login</button>
@@ -115,7 +116,7 @@ input[type=text], input[type=password] {
 
 <div id="id02" class="modal">
   
-  <form class="modal-content animate" action="/action_page.php">
+  <form class="modal-content animate" action="DB_user.php">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
     </div>
@@ -123,19 +124,19 @@ input[type=text], input[type=password] {
     <div class="container">
       <p> Sie haben Ihr Passwort vergessen? </p>
       <label for="username"><b>Username</b></label>
-      <input type="text" placeholder="Username eintragen" name="uname" required>
+      <input type="text" placeholder="Username eintragen" name="unameV" required>
       <p></p>
 
       <label for="sicher"><b>Ihre Lieblingsfarbe?</b></label>
-     <input type="text" placeholder="Sicherheitsfrage beantworten" name="sifrage" required>
+     <input type="text" placeholder="Sicherheitsfrage beantworten" name="sifrageV" required>
       <p></p>
 
       <label for="pswNeu"><b>Neues Passwort</b></label>
-      <input type="text" placeholder="Passwort eingeben" name="pswN" required>
+      <input type="text" placeholder="Passwort eingeben" name="pswNV" required>
       <p></p>
 
       <label for="pswbest"><b>Passwort bestätigen</b></label>
-      <input type="text" placeholder="Passwort bestätigen" name="pswB" required>
+      <input type="text" placeholder="Passwort bestätigen" name="pswBV" required>
       <p></p>
       <button type="submit">Passwort ändern</button>
     </div> 
@@ -144,7 +145,7 @@ input[type=text], input[type=password] {
 
 <div id="id03" class="modal">
   
-  <form class="modal-content animate" action="/action_page.php">
+  <form class="modal-content animate" action="DB_user.php">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
     </div>
@@ -152,15 +153,15 @@ input[type=text], input[type=password] {
     <div class="container">
       <p> Bitte geben Sie hier Ihre Daten ein: </p>
       <label for="username"><b>Username</b></label>
-      <input type="text" placeholder="Username eintragen" name="uname" required>
+      <input type="text" placeholder="Username eintragen" name="unameR" required>
       <p></p>
 
       <label for="sicher"><b>Ihre Lieblingsfarbe?</b></label>
-     <input type="text" placeholder="Sicherheitsfrage beantworten" name="sifrage" required>
+     <input type="text" placeholder="Sicherheitsfrage beantworten" name="sifrageR" required>
       <p></p>
 
       <label for="pswNeu"><b>Passwort</b></label>
-      <input type="text" placeholder="Passwort eingeben" name="pswN" required>
+      <input type="text" placeholder="Passwort eingeben" name="pswNR" required>
       <p></p>
 
       <label>

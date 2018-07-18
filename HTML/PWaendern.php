@@ -4,7 +4,7 @@
 	<head>
 		<title>Backfee</title>
 		<meta name="author" content="Miriam Lang">
-		<meta name="coauthor" content="">
+		<meta name="coauthor" content="Tracey Werner">
 		<meta name="description" content="Backfee persönliche Seite - Startseite">
 		<meta name="keywords" content="Backfee, persönlich">
 		<meta name="date" content="13.06.2018">
@@ -91,8 +91,8 @@
 		<ul>
                   <li><a href="PWaendern.php"><strong>Passwort ändern </strong></a></li> 
                   <li><a href="Rezepterstellen.php">Rezepte erstellen</a></li>
-                  <li><a href="MeineRezepte.html">Meine Rezepte</a></li>
-                  <li><a href="Favoriten.html">Favoriten</a></li>
+                  <li><a href="MeineRezepte.php">Meine Rezepte</a></li>
+                  <li><a href="Favoriten.php">Favoriten</a></li>
                   <li><a href="">Logout</a></li> 
 		</ul>
 	</nav>

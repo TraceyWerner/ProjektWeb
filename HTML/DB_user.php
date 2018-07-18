@@ -24,14 +24,15 @@ function einloggen($name,$passwort) {
 
 		// Schleife über Ergebnis, als Array abholen
 		// Spaltenname ist Index
-		while($row = $result->fetch_array()) { // gib mir die nächste Zeilen
+		while($row = $result->fetch_array()) {
 			$log = true;
-			
+			$_SESSION["userName"] = $row["name"];
+			return true;
 		}
-
-	// Ergebniszwischenspeicher freigeben
-	$result->close();
+		// Ergebniszwischenspeicher freigeben
+		$result->close();
 	}
+	return false;
 }// einloggen
 
 
@@ -76,34 +77,20 @@ function passwortWiederherstellen($Name,$Antwort) {
 // Passwort des Users ändern
 // **************************
 
-function passwortAendernLog($name, $passwortNeu, $passwort) {
+function passwortAendernLog($name, $passwortNeu, $passwortA, $passwortB) {
 	global $mysqli;
- 	// Mit altem Passwort Y von angemeldeten User X neues Passwort Z ändern
+	global $log;
 
-	$query = "UPDATE login Set passwort = '$passwortNeu' WHERE name = '".$mysqli->real_escape_string($name)."' AND passwort = '".$mysqli->real_escape_string($passwort)."'";
+	$query = "UPDATE login Set passwort = '$passwortNeu' WHERE name = '".$mysqli->real_escape_string($name)."' AND passwort = '".$mysqli->real_escape_string($passwortA)."'";
 
-	// Testen, ob es ein anderes Passwort ist
-	$gleich = true;
-	$var = "SELECT passwort FROM login WHERE passwort = $passwort AND name = $name";
-	if($result = $mysqli->query($var)) {
-		while($row = $result->fetch_array()) {
-			if($row["passwort"] != $passwortNeu) {
-				$gleich = false;
-			}	
-		}
-	}
-
-	// Wenn es ein anderes Passwort ist, dann ändere es!
-	if (!$gleich) {
+	if($passwortNeu == $passwortB) {
 		if ($result = $mysqli->query($query)) {
 			// Wenn eine Menge verfügbar, dann hat es geklappt.
-			echo "Ihr Passwort wurde geändert in $passwortNeu<br>"; 
+			return true;
 		}
-		else
-			echo "Das Passwort wurde nicht geändert<br>";
 	}
-	else 
-		echo "Bitte geben Sie ein anderes Passwort ein!<br>";
+	else
+		return false;
 }//passwortAendernLog
 
 
@@ -175,6 +162,21 @@ function favoriten() {
 }// favoriten
 
 
+// **************************
+// Ausloggen check
+// **************************
+
+function logout($name) {
+	global $mysqli;
+	global $log;
+
+	if($log) {
+		$log = false;
+		$_SESSION["userName"] ="";
+		echo "Auf wiedersehen";
+	}
+}
+
 
 
 
@@ -182,50 +184,44 @@ function favoriten() {
 // MAIN
 
 if($_REQUEST['unameE'] && $_REQUEST['pswE'] ) {
-	einloggen($_REQUEST['unameE'],$_REQUEST['pswE']);
-	$_SESSION['name'] = $_REQUEST['unameE'];
-	include("startseite_pers.php");
+	if(einloggen($_REQUEST['unameE'],$_REQUEST['pswE'])) {
+		$_SESSION['name'] = $_REQUEST['unameE'];
+		include("startseite_pers.php");
+	}
+	else
+	{
+		echo "das hat nicht geklappt";
+	}
 }
 else {
 	$frage = "Was ist deine Lieblingsfarbe?";
 	if($_REQUEST['unameR'] && $_REQUEST['sifrageR'] && $_REQUEST['pswNR']) {
 		registrieren($_REQUEST['unameR'], $_REQUEST['pswNR'],$frage, $_REQUEST['sifrageR']);
+		$_SESSION['name'] = $_REQUEST['unameR'];
 		include("startseite_pers.php");
 	}
 	else {
-		if($_REQUEST['uname'] && $_REQUEST['passwort'] && $_REQUEST['altesPasswort']) {
-			passwortAendernLog($_REQUEST['uname'], $_REQUEST['passwort'], $_REQUEST['altesPasswort']);
+		if($_SESSION["userName"] && $_REQUEST['pswN'] && $_REQUEST['pswA'] && $_REQUEST['pswB']) {
+			if(passwortAendernLog($_SESSION["userName"], $_REQUEST['pswN'], $_REQUEST['pswA'],$_REQUEST['pswB'])) {
+				include("PWaendern_erfolg.php");
+			}
+			else 
+				include("PWaendern_misserfolg.php");
 		}
 		else {
 			if($_REQUEST['unameV'] && $_REQUEST['sifrageV'] && $_REQUEST['pswNV'] && $_REQUEST['pswBV']) {
 				passwortAendern($_REQUEST['unameV'], $_REQUEST['sifrageV'], $_REQUEST['pswNV'], $_REQUEST['pswBV']);
+				$_SESSION['name'] = $_REQUEST['unameV'];
 				include("startseite_pers.php");
+			}
+			else {
+				if($_SESSION["userName"]) {
+					logout($_SESSION["userName"]);
+					include("startseite.php");
+				}
 			}
 		}
 	}
 }
 
-
-
-
-
-
-
-/*
-	
-// **************************
-// DELETE-Anfrage formulieren
-// **************************
-$query = "DELETE FROM person ORDER BY nachname DESC LIMIT 1";
-
-printf("<b>Jetzt wird folgendes ausgeführt:</b> <i>%s</i><br>", $query);
-
-// INSERT-Anfrage schicken
-if ($result = $mysqli->query($query)) {
-	// Das hat geklappt
-	echo "Das hat geklappt<br>"; 
-}
-else
-	echo "Das hat nicht geklappt<br>";
-*/
 ?>

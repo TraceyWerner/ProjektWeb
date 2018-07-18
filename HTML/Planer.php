@@ -9,8 +9,6 @@
 		<meta name="date" content="SS18">
 		<style type="text/css">
 			
-			#Suche {
-				margin-left: 25.5em;
 			}
 		</style>
 	</head>
@@ -46,7 +44,7 @@
 		<br>
 		<br>
 
-		<a href="Rezeptuebersicht.html">Rezepte zu Planer hinzufügen</a>
+		<a href="Rezeptuebersicht.php">Rezepte zu Planer hinzufügen</a>
 
 	</body>
 </html>

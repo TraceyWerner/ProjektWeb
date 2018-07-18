@@ -8,9 +8,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<meta name="date" content="SS18">
 		<style type="text/css">
-			
-			#Suche {
-				margin-left: 25.5em;
+		
 			}
 		</style>
 	</head>
@@ -53,7 +51,7 @@
 				<td>
 					<img src="photo_2017-09-22_15-09-19.jpg" width="150" title="Test" alt="keinBildgefunden"><br>
 				</td>
-				<td class="titel"> <a href="Detail.html">Cake Pops</a>  </td>
+				<td class="titel"> <a href="Detail.php">Cake Pops</a>  </td>
 				<td> leicht </td>
 				<td> 2 </td>	
 			</tr>
@@ -62,7 +60,7 @@
 				<td>
 					<img src="photo_2017-09-22_15-09-19.jpg" width="150" title="Test" alt="keinBildgefunden"><br>
 				</td>
-				<td class="titel"> <a href="Detail.html">Rezept2</a></td>
+				<td class="titel"> <a href="Detail.php">Rezept2</a></td>
 				<td> schwer </td>
 				<td> 1/2 </td>	
 			</tr>

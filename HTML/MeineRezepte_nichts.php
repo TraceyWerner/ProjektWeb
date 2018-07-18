@@ -60,10 +60,10 @@
 	<nav>
 		<h2>Persönliche Seite</h2> 
 		<ul> 
-			<li><a href="PWaendern.html">Passwort ändern</a></li> <!-- Link aktualisieren  -->
-			<li><a href="Rezepterstellen.html">Rezepte erstellen</a></li>
-			<li><a href="MeineRezepte.html"><strong>Meine Rezepte</strong></a></li>
-			<li><a href="Favoriten.html">Favoriten</a></li>
+			<li><a href="PWaendern.php">Passwort ändern</a></li> <!-- Link aktualisieren  -->
+			<li><a href="Rezepterstellen.php">Rezepte erstellen</a></li>
+			<li><a href="MeineRezepte.php"><strong>Meine Rezepte</strong></a></li>
+			<li><a href="Favoriten.php">Favoriten</a></li>
 			<li><a href="">Logout</a></li>
 		</ul>
 	</nav>
@@ -76,7 +76,7 @@
 		<br>
 		<br>
 
-		<a href="Rezepterstellen.html">hier neues Rezept erstellen</a>
+		<a href="Rezepterstellen.php">hier neues Rezept erstellen</a>
 
 		</article>
 	</main>

@@ -60,10 +60,10 @@
 	<nav>
 		<h2>Persönliche Seite</h2> 
 		<ul> 
-			<li><a href="PWaendern.html">Passwort ändern</a></li> <!-- Link aktualisieren  -->
-			<li><a href="Rezepterstellen.html">Rezepte erstellen</a></li>
-			<li><a href="MeineRezepte.html"><strong>Meine Rezepte</strong></a></li>
-			<li><a href="Favoriten.html">Favoriten</a></li>
+			<li><a href="PWaendern.php">Passwort ändern</a></li> <!-- Link aktualisieren  -->
+			<li><a href="Rezepterstellen.php">Rezepte erstellen</a></li>
+			<li><a href="MeineRezepte.php"><strong>Meine Rezepte</strong></a></li>
+			<li><a href="Favoriten.php">Favoriten</a></li>
 			<li><a href="">Logout</a></li>
 		</ul>
 	</nav>
@@ -89,7 +89,7 @@
 				<td>
 					<img src="photo_2017-09-22_15-09-19.jpg" width="150" title="Test" alt="keinBildgefunden"><br>
 				</td>
-				<td class="titel"> <a href="Detail.html">Cake Pops</a>  </td>
+				<td class="titel"> <a href="Detail.php">Cake Pops</a>  </td>
 				<td> leicht </td>
 				<td> 2 </td>	
 			</tr>
@@ -98,7 +98,7 @@
 				<td>
 					<img src="photo_2017-09-22_15-09-19.jpg" width="150" title="Test" alt="keinBildgefunden"><br>
 				</td>
-				<td class="titel"> <a href="Detail.html">Rezept2</a></td>
+				<td class="titel"> <a href="Detail.php">Rezept2</a></td>
 				<td> schwer </td>
 				<td> 1/2 </td>	
 			</tr>

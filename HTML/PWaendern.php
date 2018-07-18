@@ -1,3 +1,4 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -64,8 +65,8 @@
 	</head>
 
 	<body>
+		<php include ("DB_user.php")>;
 
-		<include <?php 'DB_user.php' ?>>
 	<header>
 		<h1>Backfee</h1> <!-- wird durch Logo ersetzt  -->
 		
@@ -79,7 +80,7 @@
 			<tr>
 				<th>Rezepte</th>
 				<th>Partyplaner</th>
-				<th>Willkommen, <?php echo $_SESSION['name']."!" ?> </th>
+				<th>Willkommen, <?php echo $_SESSION['userName']."!" ?> </th>
 			</tr>
 		</table>
 
@@ -100,25 +101,23 @@
 		<article>
 			<h3>Passwort ändern</h3>
 
-                  <div class="container">
+				<form class="passwortAendern" action="DB_user.php">
+                    <div class="container">
                         <p> Sie wollen Ihr Passwort ändern? </p>
                         <label for="pwalt"><b>altes Passwort</b></label>
-                        <input type="text" placeholder="Username eintragen" name="uname" required>
+                        <input type="text" placeholder="altes Passwort" name="pswA" required>
                         <p></p>
 
                         <label for="pswNeu"><b>Neues Passwort</b></label>
-                        <input type="text" placeholder="Passwort eingeben" name="pswN" required>
+                        <input type="text" placeholder="neues Passwort eingeben" name="pswN" required>
                         <p></p>
 
                         <label for="pswbest"><b>Passwort bestätigen</b></label>
-                        <input type="text" placeholder="Passwort bestätigen" name="pswB" required>
+                        <input type="text" placeholder="neues Passwort bestätigen" name="pswB" required>
                         <p></p>
                         <button type="submit">Passwort ändern</button>
-                  </div> 
-
-
-
-
+                    </div> 
+                </form>
 		</article>
 	</main>
 </body>

@@ -177,3 +177,28 @@ button {
 	border: #B60034 5px outset;
 }
 
+/*--hover-glitzer-beginn-
+https://hilfe.forumieren.com/t14918-mouseover-glitzereffekt-css*/
+a:hover {
+            POSITION: relative; 
+            TOP: 1.0px; LEFT: 1.0px;}
+a:hover {
+            background-image:url(http://i69.servimg.com/u/f69/11/49/29/60/stern110.gif);
+            }
+/*--hover-glitzer-end--*/
+
+.Impressum {
+    text-align: center;
+    position: absolute;
+    bottom: 5px;
+    left: 2.5%;
+    background-color: #FFDE9E;
+    padding: 10px;
+    border: 5px ridge #B60034;
+
+
+    width: 90%;
+
+}
+
+

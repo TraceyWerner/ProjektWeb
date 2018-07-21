@@ -7,14 +7,15 @@ echo '<link rel="stylesheet" type="text/css" href="Backfee_layout.css">';
 
 	echo "<a href='Startseite' id='logo'><img src='Logo_Backfee.png' width='50%'></a>";
 
+
 	if ($login == false) {
-		echo "<a href='Login' class='log'><img src='Login_Bild.png' width='10%'></a>";
+		echo '<a onclick="document.getElementById(\'id01\').style.display=\'block\'" class="log"><img src="Login_Bild.png" width="10%"></a>';
 	} else {
 		echo "<a href='Logout' class='log'><img src='Backfee_Logout.png' width='10%'></a>";
 	}
 
 	$menu = array(
-		'startseite' => array('text'=>'Startseite', 'url'=>'?p=startseite'),
+		'startseite' => array('text'=>'Startseite', 'url'=>'Backfee_Startseite.php'),
 		'rezepte' => array('text'=>'Rezepte', 'url'=>'?p=rezepte'),
 		'partyplaner' => array('text'=>'Partyplaner', 'url'=>'?p=partyplaner'),
 		//'log' => array('text'=>'Login/Registrieren', 'url'=>'?p=log')

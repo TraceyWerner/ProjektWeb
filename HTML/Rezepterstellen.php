@@ -86,60 +86,101 @@
 					<col width="180">
 					<col width="250">
 				</colgroup>
-                        <form class="modal-content animate" action="DB_rezept.php">
-				  <tr>
-				  	<td>
-				  		<img src="photo_2017-09-22_15-09-19.jpg" width="150" title="Test" alt="keinBildgefunden"><br>
-					</td>
 
-					<td> 
-						<label for="foto"></label>
-      					<input type="text" placeholder="Ordner durchsuchen" name="foto" required> 
-      				</td>
-      			   </tr>
+                        <form class="zutatHinzu" action="DB_rezept.php">
 
-      			   <tr>
+                              <td>
+                                    Zutaten:
+                              </td>
+
+                              <td>
+                                    <label for="Menge">Menge</label>
+                                    <input type="text" placeholder="Menge eingeben" name="Menge" required>
+                                    <p></p>
+                              </td>
+
+                              <td width="150">
+                                    
+                                    <ul> Einheit
+                                          <li>
+                                                <label><input type="radio" name="Einheit" value="gr"  CHECKED>gr</label>
+                                          </li>
+                                          <li>
+                                                <label><input type="radio" name="Einheit" value="L" CHECKED >L</label>
+                                          </li>
+                                          <li>
+                                                <label><input type="radio" name="Einheit" value="ml" CHECKED >ml</label>
+                                          </li>
+                                          <li>
+                                                <label><input type="radio" name="Einheit" value="Priese" CHECKED >Priese</label>
+                                          </li>
+                                    </ul>
+                              </td>
+
+                              <td width="150">
+                                    <ul>
+                                          <li>
+                                                <label><input type="radio" name="Einheit" value="Stück" CHECKED >Stück</label>
+                                          </li>
+                                          <li>
+                                                <label><input type="radio" name="Einheit" value="TL" CHECKED >TL</label>
+                                          </li>
+                                          <li>
+                                                <label><input type="radio" name="Einheit" value="EL" CHECKED >EL</label>
+                                          </li>
+                                    </ul>
+                                    <p></p>
+                              </td>
+
+                              <td width="250">
+                                    <label for="Name">Name</label>
+                                    <input type="text" placeholder="Name eingeben" name="NameZ" required> 
+                              </td>
+
+                              <td width="550">
+                                    <button type="submit" name="auswahl" value="Abschicken">Zutaten hinzufügen</button>
+                              </td>
+                           </tr>
+
+                           <tr>
+                              <td></td>
+                              <td colspan="4">
+                                    <textarea id="Zutaten" name="Zutaten" cols="50" rows="6">
+                                    </textarea>
+                              </td>
+                           </tr>
+                        </form>
+
+
+                        <form class="rezeptErstellen" action="DB_rezept.php">
+				   <tr>
       			   	<td>
       					Name:
       				</td>
 
       				<td>
       					<label for="Name"></label>
-      					<input type="text" placeholder="Name eingeben" name="name" required> 
+      					<input type="text" placeholder="Name eingeben" name="Rname" required> 
       				</td>
       			   </tr>
 
-      			   <tr>
-      			   	<td>
-      					Schwierigkeitsgrad:
-      				</td>
+                            <tr>
+                              <td>
+                                    Schwierigkeit:
+                              </td>
 
-      				<td>
-      					<ul> 
-      						<li>
-      							<label><input type="checkbox" name="leicht">leicht</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="mittel">mittel</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="schwer">schwer</label>
-      						</li>
-      						
-      					</ul> 
-      				</td>
-      			   </tr>
-
-      			   <tr>
-      			   	<td>
-      					Zeit in Stunden:
-      				</td>
-
-      				<td>
-      					<label for="Zeit"></label>
-      					<input type="text" placeholder="Zeit eingeben" name="zeit" required> 
-      				</td>
-      			   </tr>
+                              <td>
+                                    <li>
+                                          <label><input type="radio" name="schwer" value="leicht" >leicht</label>
+                                    </li>
+                                    <li>
+                                          <label><input type="radio" name="schwer" value="mittel" ">mittel</label>
+                                    </li>
+                                    <li>
+                                          <label><input type="radio" name="schwer" value="schwer" ">schwer</label>
+                                    </li>
+                              </td>
+                           </tr>
 
       			   <tr>
       				<td>
@@ -149,31 +190,25 @@
       				<td>
       					<ul>
       						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Backen & Süßspeisen" id="check1">Backen & Süßspeisen</label>
+      							<label><input type="checkbox" name="Kategorie" value="Backen&Süßspeisen" >Backen & Süßspeisen</label>
       						</li>
       						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Beilagen" id="check2">Beilagen</label>
+      							<label><input type="checkbox" name="Kategorie" value="Beilagen" >Beilagen</label>
       						</li>
       						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Diabetiker" id="check3">Diabetiker</label>
+      							<label><input type="checkbox" name="Kategorie" value="Getränke" ">Getränke</label>
       						</li>
       						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Getränke" id="check4">Getränke</label>
+      							<label><input type="checkbox" name="Kategorie" value="Hauptspeise" ">Hauptspeise</label>
       						</li>
       						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Hauptspeise" id="check5">Hauptspeise</label>
+      							<label><input type="checkbox" name="Kategorie" value="Laktosefrei" ">Laktosefrei</label>
       						</li>
       						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Laktosefrei" id="check6">Laktosefrei</label>
+      							<label><input type="checkbox" name="Kategorie" value="Nachtisch" ">Nachtisch</label>
       						</li>
       						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Nachtisch" id="check7">Nachtisch</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Trennkost" id="check8">Trennkost</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Vegan" id="check9">Vegan</label>
+      							<label><input type="checkbox" name="Kategorie" value="Vegan" >Vegan</label>
       						</li>
       						<li>
       							<label><input type="checkbox" name="Kategorie" value="Vegetarisch" id="check10">Vegetarisch</label>
@@ -182,71 +217,19 @@
       				</td>
       			   </tr>
 
-      			   <tr>
-      				<td>
-      					Zutaten:
-      				</td>
+                           <tr>
+                              <td>
+                                    Dauer:
+                              </td>
 
-      				<td>
-      					<label for="Menge">Menge</label>
-      					<input type="text" placeholder="Menge eingeben" name="Menge" required>
-      					<p></p>
-      				</td>
-
-					<td width="150">
-      					
-      					<ul> Einheit
-      						<li>
-      							<label><input type="checkbox" name="Einheit" value="gr" id="checkE1">gr</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="Einheit" value="L" id="checkE2">L</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="Einheit" value="ml" id="checkE3">ml</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="Einheit" value="Priese" id="checkE4">Priese</label>
-      						</li>
-      					</ul>
-      				</td>
-
-      				<td width="150">
-      					<ul>
-      						<li>
-      							<label><input type="checkbox" name="Einheit" value="Stück" id="checkE5">Stück</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="Einheit" value="TL" id="TL">TL</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="Einheit" value="EL" id="EL">EL</label>
-      						</li>
-      					</ul>
-      					<p></p>
-      				</td>
-
-      				<td width="250">
-      					<label for="Name">Name</label>
-      					<input type="text" placeholder="Name eingeben" name="Name" required> 
-      				</td>
-
-      				<td width="550">
-      					<button type="submit">Zutaten hinzufügen</button>
-      				</td>
-      			   </tr>
+                              <td>
+                                    <label for="Dauer"></label>
+                                    <input type="text" placeholder="Dauer eingeben" name="Dauer" required> 
+                              </td>
+                           </tr>
 
       			   <tr>
-      				<td></td>
-      				<td colspan="4">
-      					<textarea id="Zutaten" name="Zutaten" cols="50" rows="6">
-      					</textarea>
-      			   	</td>
-      			   </tr>
-
-      			   <tr>
-      				<td>
-      					Zubereitung:
+      				Zubereitung:
       				</td>
       				<td colspan="4">
       					<textarea id="Zubereitung" name="Zubereitung" cols="100" rows="10">
@@ -261,12 +244,7 @@
       				</td>
       			   </tr>
                         </form>
-
 			</table>
-
-
-
-
 		</article>
 	</main>
       </body>

@@ -1,3 +1,5 @@
+<? session_start()
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -69,8 +71,8 @@
 		<ul> 
 			<li><a href="PWaendern.php">Passwort ändern</a></li>
                   <li><a href="Rezepterstellen.php"> <strong> Rezepte erstellen</strong></a></li>
-                  <li><a href="MeineRezepte.html">Meine Rezepte</a></li>
-                  <li><a href="Favoriten.html">Favoriten</a></li>
+                  <li><a href="MeineRezepte.php">Meine Rezepte</a></li>
+                  <li><a href="Favoriten.php">Favoriten</a></li>
                   <li><a href="">Logout</a></li>
 		</ul>
 	</nav>
@@ -84,19 +86,20 @@
 					<col width="180">
 					<col width="250">
 				</colgroup>
-				<tr>
-					<td>
-						<img src="photo_2017-09-22_15-09-19.jpg" width="150" title="Test" alt="keinBildgefunden"><br>
+                        <form class="modal-content animate" action="DB_rezept.php">
+				  <tr>
+				  	<td>
+				  		<img src="photo_2017-09-22_15-09-19.jpg" width="150" title="Test" alt="keinBildgefunden"><br>
 					</td>
 
 					<td> 
 						<label for="foto"></label>
       					<input type="text" placeholder="Ordner durchsuchen" name="foto" required> 
       				</td>
-      			</tr>
+      			   </tr>
 
-      			<tr>
-      				<td>
+      			   <tr>
+      			   	<td>
       					Name:
       				</td>
 
@@ -104,9 +107,41 @@
       					<label for="Name"></label>
       					<input type="text" placeholder="Name eingeben" name="name" required> 
       				</td>
-      			</tr>
+      			   </tr>
 
-      			<tr>
+      			   <tr>
+      			   	<td>
+      					Schwierigkeitsgrad:
+      				</td>
+
+      				<td>
+      					<ul> 
+      						<li>
+      							<label><input type="checkbox" name="leicht">leicht</label>
+      						</li>
+      						<li>
+      							<label><input type="checkbox" name="mittel">mittel</label>
+      						</li>
+      						<li>
+      							<label><input type="checkbox" name="schwer">schwer</label>
+      						</li>
+      						
+      					</ul> 
+      				</td>
+      			   </tr>
+
+      			   <tr>
+      			   	<td>
+      					Zeit in Stunden:
+      				</td>
+
+      				<td>
+      					<label for="Zeit"></label>
+      					<input type="text" placeholder="Zeit eingeben" name="zeit" required> 
+      				</td>
+      			   </tr>
+
+      			   <tr>
       				<td>
       					Kategorie:
       				</td>
@@ -145,9 +180,9 @@
       						</li>
       					</ul>
       				</td>
-      			</tr>
+      			   </tr>
 
-      			<tr>
+      			   <tr>
       				<td>
       					Zutaten:
       				</td>
@@ -199,17 +234,17 @@
       				<td width="550">
       					<button type="submit">Zutaten hinzufügen</button>
       				</td>
-      			</tr>
+      			   </tr>
 
-      			<tr>
+      			   <tr>
       				<td></td>
       				<td colspan="4">
       					<textarea id="Zutaten" name="Zutaten" cols="50" rows="6">
       					</textarea>
-      				</td>
-      			</tr>
+      			   	</td>
+      			   </tr>
 
-      			<tr>
+      			   <tr>
       				<td>
       					Zubereitung:
       				</td>
@@ -217,14 +252,15 @@
       					<textarea id="Zubereitung" name="Zubereitung" cols="100" rows="10">
       					</textarea>
       				</td>
-      			</tr>
+      			   </tr>
 
-      			<tr>
+      			   <tr>
       				<td></td>
       				<td>
       					<button type="submit">Rezept hinzufügen</button>
       				</td>
-      			</tr>
+      			   </tr>
+                        </form>
 
 			</table>
 

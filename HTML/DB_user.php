@@ -26,7 +26,7 @@ function einloggen($name,$passwort) {
 		// Spaltenname ist Index
 		while($row = $result->fetch_array()) {
 			$log = true;
-			$_SESSION["userName"] = $row["name"];
+			$_SESSION["name"] = $row["name"];
 			return true;
 		}
 		// Ergebniszwischenspeicher freigeben
@@ -146,20 +146,30 @@ function registrieren($name,$passwort,$frage,$antwort) {
 // Favoritenliste Aufrufen
 // ***********************
 
-function favoriten() {
+function favoriten($user) {
 	global $mysqli;
 
-	$query =   "SELECT rezepte.* FROM rezepte 
+	$query =   $mysqli->query("SELECT rezepte.* FROM rezepte 
   			JOIN favoriten ON rezepte.rezeptID = favoriten.rezepte_rezeptID 
   			JOIN login ON login.name = favoriten.login_name
- 			WHERE login.name = '$name'";
+ 			WHERE login.name = '$user'");
 
-	if($result = $mysqli->query($query)) {
-		while($row = $result->fetch_array()) {
-			printf("Das Rezept ist:",$row["bild"],$row["name"],$row["ersteller"], $row["zubereitung"], @$row["rezeptID"]);
-		}
-	}
+	$_SESSION["daten"] = $query->fetch_all();
 }// favoriten
+
+
+function meineRezepte($ich) {
+	global $mysqli;
+	$query =   $mysqli->query("SELECT rezepte.* FROM rezepte WHERE ersteller = '$ich'");
+	if($query) {
+		$_SESSION["meineDaten"] = $query->fetch_all();
+		return true;
+	}
+	else
+		return false;
+
+	
+}
 
 
 // **************************
@@ -169,10 +179,8 @@ function favoriten() {
 function logout($name) {
 	global $mysqli;
 
-	$_SESSION["userName"] ="";
+	$_SESSION["userName"] = "";
 	$_SESSION["name"] = "";
-	echo "Auf wiedersehen";
-
 }
 
 
@@ -185,10 +193,6 @@ if($_REQUEST['unameE'] && $_REQUEST['pswE'] ) {
 	if(einloggen($_REQUEST['unameE'],$_REQUEST['pswE'])) {
 		$_SESSION['name'] = $_REQUEST['unameE'];
 		include("startseite_pers.php");
-	}
-	else
-	{
-		echo "das hat nicht geklappt";
 	}
 }
 else {
@@ -213,13 +217,29 @@ else {
 				include("startseite_pers.php");
 			}
 			else {
-				if($_SESSION["userName"]) {
+				$knopf = $_REQUEST['Knopf'];
+				if($knopf == "favoriten") {
+					include("Favoriten.php");
+				}
+				if($knopf == "logout") {
 					logout($_SESSION["userName"]);
 					include("startseite.php");
+				}
+				if($knopf == "meineRezepte") {
+					if(meineRezepte($_SESSION["name"])) {
+						include("MeineRezepte.php");
+					}
 				}
 			}
 		}
 	}
 }
+
+
+// Knopf value benutzen anstatt $Request !
+/*
+
+				else {
+				*/
 
 ?>

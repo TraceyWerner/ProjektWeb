@@ -26,9 +26,9 @@ echo '<link rel="stylesheet" type="text/css" href="Backfee_layout.css">';
 			$html = "<nav class='$class'>\n";
 			foreach($items as $key => $item) {
 				$selected = (isset($_GET['p'])) && $_GET['p'] == $key ? 'selected' : null;
-				$html .= "<a href='{$item['url']}'>{$item['text']}</a>\n";
+				$html .= "<button href='{$item['url']}'>{$item['text']}</button>\n";
 			}
-			$html .= '<a onclick="document.getElementById(\'id01\').style.display=\'block\'">Login/Registrieren</a>';
+			$html .= '<button onclick="document.getElementById(\'id01\').style.display=\'block\'">Login/Registrieren</button>';
 			$html .= "</nav>\n";
 			return $html;
 		}

@@ -107,7 +107,7 @@ function kategorie($rezept,$kateg) {
 
 //main
 
-if($_REQUEST["NameZ"] && $_REQUEST["Einheit"] && $_REQUEST["Menge"]) {
+if($_REQUEST["NameZ"] && $_REQUEST["Einheit"] && $_REQUEST["Menge"]) { // Knopf machen !
 	$_SESSION["menge"] = $_REQUEST["Menge"];
 	$auswahl = $_REQUEST["Einheit"];
 	$Z = array();
@@ -122,6 +122,7 @@ if($_REQUEST["NameZ"] && $_REQUEST["Einheit"] && $_REQUEST["Menge"]) {
 	if ($auswahl == "ml") {
 		if(zutaten($_REQUEST["NameZ"], 2)) {
 			$Z[] = $_SESSION["zutatID"];
+			echo $_SESSION["menge"];
 			include("rezeptErstellenWeiter.php");
 		}
 	}
@@ -160,13 +161,17 @@ else {
 // rezept erstellen mit Arrayzutaten
 if($_REQUEST["Rname"] && $_REQUEST["Kategorie"]) {
 	$Kate = $_REQUEST["Kategorie"];
-
 	if($Kate == "Backen&Süßspeisen") {
 		$schwer = $_REQUEST["schwer"];
 		if(rezeptErstellen(0, $_REQUEST["Rname"],$_SESSION["userName"],$_REQUEST["Zubereitung"],$_REQUEST["Dauer"], $schwer)) {
 			if(kategorie($_SESSION["RezeptID"], 4)) {
-				//if(rezeptHatZutat($_SESSION["RezeptID"], $_SESSION["zutatID"], $_SESSION["menge"]))
-					include("startseite_pers.php");
+				if(rezeptHatZutat($_SESSION["RezeptID"], $_SESSION["zutatID"], $_SESSION["menge"])) {
+					echo $_SESSION["RezeptID"]," ", $_SESSION["zutatID"], " ", $_SESSION["menge"];
+					echo "JAAAAA";
+				}
+				else
+					echo "DOOF";
+					//include("startseite_pers.php");
 			}
 		}
 	}

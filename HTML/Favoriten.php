@@ -51,7 +51,7 @@
 			<tr>
 				<th>Rezepte</th>
 				<th>Partyplaner</th>
-				<th>Willkommen, "USER123" </th> <!-- immer aktuellen User  -->
+				<th>Willkommen, <?php echo $_SESSION['name']."!" ?> </th> <!-- immer aktuellen User  -->
 			</tr>
 		</table>
 
@@ -60,11 +60,11 @@
 	<nav>
 		<h2>Persönliche Seite</h2> 
 		<ul> 
-			<li><a href="PWaendern.php">Passwort ändern</a></li> <!-- Link aktualisieren  -->
-			<li><a href="Rezepterstellen.php">Rezepte erstellen</a></li>
-			<li><a href="MeineRezepte.php">Meine Rezepte</a></li>
-			<li><a href="Favoriten.php"><strong>Favoriten</strong></a></li>
-			<li><a href="">Logout</a></li>
+			<form action ="PWaendern.php"><button type="submit" name="Knopf" value="PW">Passwort ändern</button> </form>
+			<form action ="Rezepterstellen.php"> <button type="submit" name="Knopf" value="RezErstellen">Rezepte erstellen</button> </form>
+			<form action ="DB_user.php"> <button type="submit" name="Knopf" value="meineRezepte">Meine Rezepte</button> </form>
+			<form action ="DB_user.php"> <button type="submit" name="Knopf" value="favoriten">Favoriten</button> </form>
+			<form action ="DB_user.php"> <button type="submit" name="Knopf" value="logout">Logout</button> </form>
 		</ul>
 	</nav>
 
@@ -85,23 +85,19 @@
 				<td> <strong>Schwierigkeitsgrad:</strong> </td>
 				<td> <strong> Zeit in Stunden: </strong> </td>
 			</tr>
-			<tr>
-				<td>
-					<img src="photo_2017-09-22_15-09-19.jpg" width="150" title="Test" alt="keinBildgefunden"><br>
-				</td>
-				<td class="titel"> <a href="Detail.php">Cake Pops</a>  </td>
-				<td> leicht </td>
-				<td> 2 </td>	
-			</tr>
+			
+			<?php 
 
-			<tr>
-				<td>
-					<img src="photo_2017-09-22_15-09-19.jpg" width="150" title="Test" alt="keinBildgefunden"><br>
-				</td>
-				<td class="titel"> <a href="Detail.php">Rezept2</a></td>
-				<td> schwer </td>
-				<td> 1/2 </td>	
-			</tr>
+			for($i = 0; $i < count($_SESSION["daten"]); $i++) {
+				echo "<tr>
+				<td>  ".$_SESSION["daten"][$i][0]."  </td>
+				<td>  ".$_SESSION["daten"][$i][1]."  </td>
+				<td>  ".$_SESSION["daten"][$i][6]." </td>
+				<td>  ".$_SESSION["daten"][$i][5]." </td>
+				</tr>";
+			}
+			?>
+			
 		</table>
 
 		</article>

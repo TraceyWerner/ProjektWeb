@@ -69,11 +69,11 @@
 	<nav>
 		<h2>Persönliche Seite</h2> 
 		<ul> 
-			<li><a href="PWaendern.php">Passwort ändern</a></li>
-                  <li><a href="Rezepterstellen.php"> <strong> Rezepte erstellen</strong></a></li>
-                  <li><a href="MeineRezepte.php">Meine Rezepte</a></li>
-                  <li><a href="Favoriten.php">Favoriten</a></li>
-                  <li><a href="">Logout</a></li>
+			<form action ="PWaendern.php"><button type="submit" name="Knopf" value="PW">Passwort ändern</button> </form>
+                  <form action ="Rezepterstellen.php"> <button type="submit" name="Knopf" value="RezErstellen">Rezepte erstellen</button> </form>
+                  <form action ="MeineRezepte.php"> <button type="submit" name="Knopf" value="meineRezepte">Meine Rezepte</button> </form>
+                  <form action ="Favoriten.php"> <button type="submit" name="Knopf" value="favoriten">Favoriten</button> </form>
+                  <form action ="startseite.php"> <button type="submit" name="Knopf" value="logout">Logout</button> </form>
 		</ul>
 	</nav>
 
@@ -229,6 +229,7 @@
                            </tr>
 
       			   <tr>
+                              <td>
       				Zubereitung:
       				</td>
       				<td colspan="4">

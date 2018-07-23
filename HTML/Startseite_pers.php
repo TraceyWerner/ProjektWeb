@@ -62,11 +62,12 @@
 	<nav>
 		<h2>Persönliche Seite</h2> 
 		<ul> 
-			<li><a href="PWaendern.php">Passwort ändern</a></li>
-			<li><a href="Rezepterstellen.php">Rezepte erstellen</a></li>
-			<li><a href="MeineRezepte.html">Meine Rezepte</a></li> <!-- noch nicht da  -->
-			<li><a href="Favoriten.html">Favoriten</a></li> <!-- noch nicht da  -->
-			<li><a href="">Logout</a></li>
+			<form action ="PWaendern.php"><button type="submit" name="Knopf" value="PW">Passwort ändern</button> </form>
+			<form action ="Rezepterstellen.php"> <button type="submit" name="Knopf" value="RezErstellen">Rezepte erstellen</button> </form>
+			<form action ="DB_user.php"> <button type="submit" name="Knopf" value="meineRezepte">Meine Rezepte</button> </form>
+			<form action ="DB_user.php"> <button type="submit" name="Knopf" value="favoriten">Favoriten</button> </form>
+			<form action ="DB_user.php"> <button type="submit" name="Knopf" value="logout">Logout</button> </form>
+
 		</ul>
 	</nav>
 

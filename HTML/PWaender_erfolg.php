@@ -79,7 +79,7 @@
 			<tr>
 				<th>Rezepte</th>
 				<th>Partyplaner</th>
-				<th>Willkommen, <?php echo $_SESSION['userName']."!" ?> </th>
+				<th>Willkommen, <?php echo $_SESSION['name']."!" ?> </th>
 			</tr>
 		</table>
 
@@ -88,11 +88,11 @@
 	<nav>
 		<h2>Persönliche Seite</h2> 
 		<ul>
-                  <li><a href="PWaendern.php"><strong>Passwort ändern </strong></a></li> 
-                  <li><a href="Rezepterstellen.php">Rezepte erstellen</a></li>
-                  <li><a href="MeineRezepte.php">Meine Rezepte</a></li>
-                  <li><a href="Favoriten.php">Favoriten</a></li>
-                  <li><a href="">Logout</a></li> 
+                  <form action ="PWaendern.php"><button type="submit" name="Knopf" value="PW">Passwort ändern</button> </form>
+			<form action ="Rezepterstellen.php"> <button type="submit" name="Knopf" value="RezErstellen">Rezepte erstellen</button> </form>
+			<form action ="DB_user.php"> <button type="submit" name="Knopf" value="meineRezepte">Meine Rezepte</button> </form>
+			<form action ="DB_user.php"> <button type="submit" name="Knopf" value="favoriten">Favoriten</button> </form>
+			<form action ="DB_user.php"> <button type="submit" name="Knopf" value="logout">Logout</button> </form>
 		</ul>
 	</nav>
 

@@ -10,7 +10,6 @@ if (mysqli_connect_errno()) {
 }
 
 session_start();
-
 // *****************
 // rezept erstellen
 // *****************
@@ -26,6 +25,7 @@ function rezeptErstellen($bild,$name,$ersteller,$zubereitung,$Dauer,$schwierigke
 		if($ergebnis = $mysqli->query($ID)) {
 			while($row = $ergebnis->fetch_array()) {
 				$_SESSION["RezeptID"] = $row["rezeptID"];
+				$_SESSION["zutatName"] = array();
 				return true;
 			}
 		}
@@ -43,13 +43,16 @@ function zutaten($name, $einheit) {
 	if(!isset($_SESSION["zutatID"])) {
 		$_SESSION["zutatID"] = array();
 	}
+	if(!isset($_SESSION["zutatName"])) {
+			$_SESSION["zutatName"] = array();
+	}
 	// Checken, ob es Zutat schon gibt
 	$var = "SELECT zutatenID FROM zutaten WHERE name = '$name'";
 	
 	if ($result = $mysqli->query($var)) {
 		while($row = $result->fetch_array()) {
-			$_SESSION["zutatID"] = array();
 			$_SESSION["zutatID"][] = $row["zutatenID"];
+			$_SESSION["zutatName"][] = $name;
 			return true;
 		}
 	}
@@ -61,6 +64,7 @@ function zutaten($name, $einheit) {
  		if($ergebnis = $mysqli->query($var)) {
 			while($row = $ergebnis->fetch_array()) {
 				$_SESSION["zutatID"][]= $row["zutatenID"];
+				$_SESSION["zutatName"][] = $name;
 				return true;
 			}
 		}
@@ -99,8 +103,22 @@ function kategorie($rezept,$kateg) {
 	return false;
 }
 
+function alleRezepte() {
+	global $mysqli;
+	$query =   $mysqli->query("SELECT rezepte.* FROM rezepte");
+	if($query) {
+		$_SESSION["meineDaten"] = $query->fetch_all();
+		return true;
+	}
+	else
+		return false;
+}
+
 //echo "</pre>Session<pre>";
 //var_dump($_SESSION["zutatID"]);
+//echo "</pre>";
+//echo "</pre>Session<pre>";
+//var_dump($_SESSION["zutatName"]);
 //echo "</pre>";
 
 
@@ -127,7 +145,12 @@ if($knopf == "rezept") {
 			include("startseite_pers.php");
 		}
 	}
+	$_SESSION["zutatID"] = array();
 }
+// alle Rezepte
+/*if($knopf == "alle") {
+
+}*/
 
 
 

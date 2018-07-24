@@ -11,7 +11,8 @@ if (mysqli_connect_errno()) {
 
 session_start();
 
-$_SESSION["login"] = false;
+if(!isset($_SESSION["login"]))
+	$_SESSION["login"] = false;
 
 // **************************
 // Einloggen check

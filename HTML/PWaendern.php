@@ -4,7 +4,7 @@
 	<head>
 		<title>Backfee</title>
 		<meta name="author" content="Miriam Lang">
-		<meta name="coauthor" content="Tracey Werner">
+		<meta name="coauthor" content="">
 		<meta name="description" content="Backfee persönliche Seite - Startseite">
 		<meta name="keywords" content="Backfee, persönlich">
 		<meta name="date" content="13.06.2018">
@@ -80,7 +80,7 @@
 			<tr>
 				<th>Rezepte</th>
 				<th>Partyplaner</th>
-				<th>Willkommen, <?php echo $_SESSION['userName']."!" ?> </th>
+				<th>Willkommen, <?php echo $_SESSION['name']."!" ?> </th>
 			</tr>
 		</table>
 
@@ -89,11 +89,11 @@
 	<nav>
 		<h2>Persönliche Seite</h2> 
 		<ul>
-                  <li><a href="PWaendern.php"><strong>Passwort ändern </strong></a></li> 
-                  <li><a href="Rezepterstellen.php">Rezepte erstellen</a></li>
-                  <li><a href="MeineRezepte.php">Meine Rezepte</a></li>
-                  <li><a href="Favoriten.php">Favoriten</a></li>
-                  <li><a href="">Logout</a></li> 
+                 <form action ="PWaendern.php"><button type="submit" name="Knopf" value="PW">Passwort ändern</button> </form>
+			<form action ="Rezepterstellen.php"> <button type="submit" name="Knopf" value="RezErstellen">Rezepte erstellen</button> </form>
+			<form action ="DB_user.php"> <button type="submit" name="Knopf" value="meineRezepte">Meine Rezepte</button> </form>
+			<form action ="DB_user.php"> <button type="submit" name="Knopf" value="favoriten">Favoriten</button> </form>
+			<form action ="DB_user.php"> <button type="submit" name="Knopf" value="logout">Logout</button> </form> 
 		</ul>
 	</nav>
 
@@ -105,17 +105,17 @@
                     <div class="container">
                         <p> Sie wollen Ihr Passwort ändern? </p>
                         <label for="pwalt"><b>altes Passwort</b></label>
-                        <input type="text" placeholder="altes Passwort" name="pswA" required>
+                        <input type="password" placeholder="altes Passwort" name="pswA" required>
                         <p></p>
 
                         <label for="pswNeu"><b>Neues Passwort</b></label>
-                        <input type="text" placeholder="neues Passwort eingeben" name="pswN" required>
+                        <input type="password" placeholder="neues Passwort eingeben" name="pswN" required>
                         <p></p>
 
                         <label for="pswbest"><b>Passwort bestätigen</b></label>
-                        <input type="text" placeholder="neues Passwort bestätigen" name="pswB" required>
+                        <input type="password" placeholder="neues Passwort bestätigen" name="pswB" required>
                         <p></p>
-                        <button type="submit">Passwort ändern</button>
+                        <button type="submit" name ="pass" value="aender">Passwort ändern</button>
                     </div> 
                 </form>
 		</article>

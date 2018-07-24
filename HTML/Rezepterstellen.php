@@ -71,9 +71,9 @@
 		<ul> 
 			<form action ="PWaendern.php"><button type="submit" name="Knopf" value="PW">Passwort ändern</button> </form>
                   <form action ="Rezepterstellen.php"> <button type="submit" name="Knopf" value="RezErstellen">Rezepte erstellen</button> </form>
-                  <form action ="MeineRezepte.php"> <button type="submit" name="Knopf" value="meineRezepte">Meine Rezepte</button> </form>
-                  <form action ="Favoriten.php"> <button type="submit" name="Knopf" value="favoriten">Favoriten</button> </form>
-                  <form action ="startseite.php"> <button type="submit" name="Knopf" value="logout">Logout</button> </form>
+                  <form action ="DB_user.php"> <button type="submit" name="Knopf" value="meineRezepte">Meine Rezepte</button> </form>
+                  <form action ="DB_user.php"> <button type="submit" name="Knopf" value="favoriten">Favoriten</button> </form>
+                  <form action ="DB_user.php"> <button type="submit" name="Knopf" value="logout">Logout</button> </form>
 		</ul>
 	</nav>
 
@@ -103,16 +103,16 @@
                                     
                                     <ul> Einheit
                                           <li>
-                                                <label><input type="radio" name="Einheit" value="gr"  CHECKED>gr</label>
+                                                <label><input type="radio" name="Einheit" value= 1  CHECKED>gr</label>
                                           </li>
                                           <li>
-                                                <label><input type="radio" name="Einheit" value="L" CHECKED >L</label>
+                                                <label><input type="radio" name="Einheit" value= 4 CHECKED >L</label>
                                           </li>
                                           <li>
-                                                <label><input type="radio" name="Einheit" value="ml" CHECKED >ml</label>
+                                                <label><input type="radio" name="Einheit" value= 2 CHECKED >ml</label>
                                           </li>
                                           <li>
-                                                <label><input type="radio" name="Einheit" value="Priese" CHECKED >Priese</label>
+                                                <label><input type="radio" name="Einheit" value= 5 CHECKED >Prise</label>
                                           </li>
                                     </ul>
                               </td>
@@ -120,13 +120,13 @@
                               <td width="150">
                                     <ul>
                                           <li>
-                                                <label><input type="radio" name="Einheit" value="Stück" CHECKED >Stück</label>
+                                                <label><input type="radio" name="Einheit" value= 3 CHECKED >Stück</label>
                                           </li>
                                           <li>
-                                                <label><input type="radio" name="Einheit" value="TL" CHECKED >TL</label>
+                                                <label><input type="radio" name="Einheit" value= 6 CHECKED >TL</label>
                                           </li>
                                           <li>
-                                                <label><input type="radio" name="Einheit" value="EL" CHECKED >EL</label>
+                                                <label><input type="radio" name="Einheit" value= 7 CHECKED >EL</label>
                                           </li>
                                     </ul>
                                     <p></p>
@@ -138,21 +138,31 @@
                               </td>
 
                               <td width="550">
-                                    <button type="submit" name="auswahl" value="Abschicken">Zutaten hinzufügen</button>
+                                    <button type="submit" name="knopf" value="zutat">Zutaten hinzufügen</button>
                               </td>
                            </tr>
 
                            <tr>
                               <td></td>
-                              <td colspan="4">
-                                    <textarea id="Zutaten" name="Zutaten" cols="50" rows="6">
-                                    </textarea>
+                              <td colspan="4"> 
+                                     <textarea id="Zutaten" name=Zutaten></textarea>
                               </td>
                            </tr>
                         </form>
 
 
                         <form class="rezeptErstellen" action="DB_rezept.php">
+                              <tr>
+                                    <td>
+                                          Bild:
+                                    </td>
+                                    <td>
+                                          <label for="Bild"></label>
+                                          <input type="file" placeholder="durchsuchen" name ="bild" enctype="multipart/form-data">
+                                    </td>
+                                    
+                              </tr>
+
 				   <tr>
       			   	<td>
       					Name:
@@ -190,28 +200,28 @@
       				<td>
       					<ul>
       						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Backen&Süßspeisen" >Backen & Süßspeisen</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Beilagen" >Beilagen</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Getränke" ">Getränke</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Hauptspeise" ">Hauptspeise</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Laktosefrei" ">Laktosefrei</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Nachtisch" ">Nachtisch</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Vegan" >Vegan</label>
-      						</li>
-      						<li>
-      							<label><input type="checkbox" name="Kategorie" value="Vegetarisch" id="check10">Vegetarisch</label>
+      						      <label><input type="radio" name="Kategorie" value= 4 >Backen & Süßspeisen</label>
+                                          </li>
+                                          <li>
+                                                <label><input type="radio" name="Kategorie" value= 8 >Beilagen</label>
+                                          </li>
+                                          <li>
+                                                <label><input type="radio" name="Kategorie" value= 3 ">Getränke</label>
+                                          </li>
+                                          <li>
+                                                <label><input type="radio" name="Kategorie" value= 6 ">Hauptspeise</label>
+                                          </li>
+                                          <li>
+                                                <label><input type="radio" name="Kategorie" value= 2 ">Laktosefrei</label>
+                                          </li>
+                                          <li>
+                                                <label><input type="radio" name="Kategorie" value= 7 ">Nachtisch</label>
+                                          </li>
+                                          <li>
+                                                <label><input type="radio" name="Kategorie" value= 5 >Vegan</label>
+                                          </li>
+                                          <li>
+                                                <label><input type="radio" name="Kategorie" value= 1 id="check10">Vegetarisch</label>
       						</li>
       					</ul>
       				</td>
@@ -241,7 +251,7 @@
       			   <tr>
       				<td></td>
       				<td>
-      					<button type="submit">Rezept hinzufügen</button>
+      					<button type="submit" name="knopf" value="rezept">Rezept hinzufügen</button>
       				</td>
       			   </tr>
                         </form>

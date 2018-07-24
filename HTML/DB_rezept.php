@@ -11,6 +11,8 @@ if (mysqli_connect_errno()) {
 
 session_start();
 
+//if(!isset($_SESSION["zutatID"]))
+//	$_SESSION["zutatID"] = array();
 
 
 // *****************
@@ -42,21 +44,15 @@ function rezeptErstellen($bild,$name,$ersteller,$zubereitung,$Dauer,$schwierigke
 function zutaten($name, $einheit) {
 	global $mysqli;
 
-	// Von Char einheit die ID bekommen
-	//$einh= "SELECT ID FROM einheiten WHERE name = '$einheiten'"; 
-
-	//if($result = $mysqli->query($einh)) {
-	//	while($row = $result->fetch_array()) {
-	//		$_SESSION["einheitenID"] = $row["ID"];
-	//	}
-	//}
-
 	// Checken, ob es Zutat schon gibt
-	$var = "SELECT name FROM zutaten WHERE name = '$name'";
+	$var = "SELECT zutatenID FROM zutaten WHERE name = '$name'";
 
 	if ($result = $mysqli->query($var)) {
 		while($row = $result->fetch_array()) {
 			$_SESSION["zutatID"] = $row["zutatenID"];
+			//$_SESSION["zutatID"][$row["zutatenID"]] = array();
+			//$_SESSION["zutatID"][$row["zutatenID"]]["menge"] = $_SESSION["menge"];
+			//$_SESSION["zutatID"][$row["zutatenID"]]["einheit"] = $_REQUEST["Einheit"];
 			return true;
 		}
 	}
@@ -65,9 +61,13 @@ function zutaten($name, $einheit) {
 
 	// Wenn Zutat neu, hinzufügen der neuen Zutat !
  	if ($result = $mysqli->query($zutaten)) {
-		 $_SESSION["zutatID"]= $row["zutatenID"];
-		 return true;
+ 		if($ergebnis = $mysqli->query($var)) {
+			while($row = $ergebnis->fetch_array()) {
+				$_SESSION["zutatID"]= $row["zutatenID"];
+				return true;
+			}
 		}
+	}
 	return false;
 } //zutaten
 
@@ -101,135 +101,46 @@ function kategorie($rezept,$kateg) {
 	}
 	return false;
 }
-
-
+echo "Request: <pre>";
+var_dump($_REQUEST);
+echo "</pre>Session<pre>";
+var_dump($_SESSION);
+echo "</pre>";
 
 
 //main
-
-if($_REQUEST["NameZ"] && $_REQUEST["Einheit"] && $_REQUEST["Menge"]) { // Knopf machen !
+$knopf = $_REQUEST["knopf"];
+if ($knopf == "zutat") {
 	$_SESSION["menge"] = $_REQUEST["Menge"];
-	$auswahl = $_REQUEST["Einheit"];
+	$_SESSION['auswahl'] = $_REQUEST["Einheit"];
 	$Z = array();
-
-// Benötigten Zutaten einfügen in array
-	if ($auswahl=="gr"){
-		if(zutaten($_REQUEST["NameZ"], 1)) {
+	// Benötigten Zutaten einfügen in array
+	//if ($auswahl=="gr"){
+		if(zutaten($_REQUEST["NameZ"], $_SESSION['auswahl'])) {
 			$Z[] = $_SESSION["zutatID"];
 			include("rezeptErstellenWeiter.php");
 		}
-	}
-	if ($auswahl == "ml") {
-		if(zutaten($_REQUEST["NameZ"], 2)) {
-			$Z[] = $_SESSION["zutatID"];
-			echo $_SESSION["menge"];
-			include("rezeptErstellenWeiter.php");
-		}
-	}
-	if ($auswahl == "L") {
-		if(zutaten($_REQUEST["NameZ"], 4)) {
-			$Z[] = $_SESSION["zutatID"];
-			include("rezeptErstellenWeiter.php");
-		}
-	}
-	if ($auswahl == "Priese") {
-		if(zutaten($_REQUEST["NameZ"], 5)) {
-			$Z[] = $_SESSION["zutatID"];
-			include("rezeptErstellenWeiter.php");
-		}
-	}
-	if ($auswahl == "Stück") {
-		if(zutaten($_REQUEST["NameZ"], 3)) {
-			$Z[] = $_SESSION["zutatID"];
-			include("rezeptErstellenWeiter.php");
-		}
-	}
-	if ($auswahl == "EL") {
-		if(zutaten($_REQUEST["NameZ"], 7)) {
-			$Z[] = $_SESSION["zutatID"];
-			include("rezeptErstellenWeiter.php");
-		}
-	}
-	if ($auswahl == "TL") {
-		if(zutaten($_REQUEST["NameZ"], 6)) {
-			$Z[] = $_SESSION["zutatID"];
-			include("rezeptErstellenWeiter.php");
-		}
-	}
 }
-else {
 // rezept erstellen mit Arrayzutaten
-if($_REQUEST["Rname"] && $_REQUEST["Kategorie"]) {
-	$Kate = $_REQUEST["Kategorie"];
-	if($Kate == "Backen&Süßspeisen") {
-		$schwer = $_REQUEST["schwer"];
-		if(rezeptErstellen(0, $_REQUEST["Rname"],$_SESSION["userName"],$_REQUEST["Zubereitung"],$_REQUEST["Dauer"], $schwer)) {
-			if(kategorie($_SESSION["RezeptID"], 4)) {
-				if(rezeptHatZutat($_SESSION["RezeptID"], $_SESSION["zutatID"], $_SESSION["menge"])) {
-					echo $_SESSION["RezeptID"]," ", $_SESSION["zutatID"], " ", $_SESSION["menge"];
-					echo "JAAAAA";
-				}
-				else
-					echo "DOOF";
-					//include("startseite_pers.php");
+if($knopf == "rezept") {
+	$_SESSION["KategorieID"] = $_REQUEST["Kategorie"];
+	$schwer = $_REQUEST["schwer"];
+	if(rezeptErstellen($_REQUEST["bild"],$_REQUEST["Rname"],$_SESSION["name"],$_REQUEST["Zubereitung"],$_REQUEST["Dauer"],$schwer)) {
+		if(kategorie($_SESSION["RezeptID"], $_SESSION["KategorieID"])) {
+			if(rezeptHatZutat($_SESSION["RezeptID"], $_SESSION["zutatID"], $_SESSION["menge"])) {
+				include("startseite_pers.php");
+			}
+			else {
+				echo "DOOF";
+				ECHO $_SESSION["RezeptID"]," ", $_SESSION["zutatID"]," ", $_SESSION["menge"];
 			}
 		}
 	}
-	if($Kate == "Hauptspeise") {
-		$schwer = $_REQUEST["schwer"];
-		if(rezeptErstellen(0, $_REQUEST["Rname"],$_SESSION["userName"],$_REQUEST["Zubereitung"],$_REQUEST["Dauer"], $schwer)) {
-			if(kategorie($_SESSION["RezeptID"], 6)) {
-				//if(rezeptHatZutat($_SESSION["RezeptID"], $_SESSION["zutatID"], $_SESSION["menge"]))
-					include("startseite_pers.php");
-				//else 
-				//	echo $_SESSION["RezeptID"]," ", $_SESSION["zutatID"]," bla", $_SESSION["menge"];
-			}
-		}
-	}
-	if($Kate == "Beilagen") {
-		$schwer = $_REQUEST["schwer"];
-		if(rezeptErstellen(0, $_REQUEST["Rname"],$_SESSION["userName"],$_REQUEST["Zubereitung"],$_REQUEST["Dauer"], $schwer)) {
-			if(kategorie($_SESSION["RezeptID"], 8))
-				include("startseite_pers.php");
-		}
-	}
-	if($Kate == "Getränke") {
-		$schwer = $_REQUEST["schwer"];
-		if(rezeptErstellen(0, $_REQUEST["Rname"],$_SESSION["userName"],$_REQUEST["Zubereitung"],$_REQUEST["Dauer"], $schwer)) {
-			if(kategorie($_SESSION["RezeptID"], 3))
-				include("startseite_pers.php");
-		}
-	}
-	if($Kate == "Laktosefrei") {
-		$schwer = $_REQUEST["schwer"];
-		if(rezeptErstellen(0, $_REQUEST["Rname"],$_SESSION["userName"],$_REQUEST["Zubereitung"],$_REQUEST["Dauer"], $schwer)) {
-			if(kategorie($_SESSION["RezeptID"], 2))
-				include("startseite_pers.php");
-		}
-	}
-	if($Kate == "Nachtisch") {
-		$schwer = $_REQUEST["schwer"];
-		if(rezeptErstellen(0, $_REQUEST["Rname"],$_SESSION["userName"],$_REQUEST["Zubereitung"],$_REQUEST["Dauer"], $schwer)) {
-			if(kategorie($_SESSION["RezeptID"], 7))
-				include("startseite_pers.php");
-		}
-	}
-	if($Kate == "Vegan") {
-		$schwer = $_REQUEST["schwer"];
-		if(rezeptErstellen(0, $_REQUEST["Rname"],$_SESSION["userName"],$_REQUEST["Zubereitung"],$_REQUEST["Dauer"], $schwer)) {
-			if(kategorie($_SESSION["RezeptID"], 5))
-				include("startseite_pers.php");
-		}
-	}
-	if($Kate == "Vegetarisch") {
-		$schwer = $_REQUEST["schwer"];
-		if(rezeptErstellen(0, $_REQUEST["Rname"],$_SESSION["userName"],$_REQUEST["Zubereitung"],$_REQUEST["Dauer"], $schwer)) {
-			if(kategorie($_SESSION["RezeptID"], 1))
-				include("startseite_pers.php");
-		}
-	}
 }
-}
+
+
+
+
 
 
 

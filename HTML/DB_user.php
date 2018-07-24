@@ -11,12 +11,13 @@ if (mysqli_connect_errno()) {
 
 session_start();
 
+$_SESSION["login"] = false;
+
 // **************************
 // Einloggen check
 // **************************
 function einloggen($name,$passwort) {
 	global $mysqli;
-	$log = false;
 	$query =  "SELECT name FROM login WHERE name = '$name' AND passwort = '$passwort'";
 
 	// SELECT-Anfrage schicken
@@ -25,7 +26,7 @@ function einloggen($name,$passwort) {
 		// Schleife über Ergebnis, als Array abholen
 		// Spaltenname ist Index
 		while($row = $result->fetch_array()) {
-			$log = true;
+			$_SESSION["login"] = true;
 			$_SESSION["name"] = $row["name"];
 			return true;
 		}
@@ -61,7 +62,7 @@ function passwortAendern($name, $antwort, $passwortNeu, $passwort) {
 
 	if($passwortNeu == $passwort) {
 		if($result = $mysqli->query($query)) {
-
+			$_SESSION["login"] = true;
 		}
 	}
 
@@ -89,7 +90,7 @@ function registrieren($name,$passwort,$frage,$antwort) {
 
  	if (!$nutzerexistiert) {
  		if ($result = $mysqli->query($query)) {
-			echo "Sie haben sich erfolgreich registriert<br>"; 
+ 			$_SESSION["login"] = true;
 		}
 	}
 	else
@@ -132,7 +133,7 @@ function meineRezepte($ich) {
 
 function logout($name) {
 	global $mysqli;
-
+	$_SESSION["login"] = false;
 	$_SESSION["name"] = "";
 }
 

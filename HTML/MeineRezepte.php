@@ -3,7 +3,7 @@
 	<head>
 		<title>Backfee</title>
 		<meta name="author" content="Miriam Lang">
-		<meta name="coauthor" content="">
+		<meta name="coauthor" content="trcaey werner">
 		<meta name="description" content="Backfee persönliche Seite - Startseite">
 		<meta name="keywords" content="Backfee, persönlich">
 		<meta name="date" content="13.06.2018">
@@ -51,7 +51,7 @@
 			<tr>
 				<th>Rezepte</th>
 				<th>Partyplaner</th>
-				<th>Willkommen, <?php echo $_SESSION['name']."!" ?> </th> <!-- immer aktuellen User  -->
+				<th>Willkommen, <?php echo $_SESSION['name']."!" ?> </th> 
 			</tr>
 		</table>
 
@@ -87,10 +87,9 @@
 			</tr>
 			
 			<?php 
-
 			for($i = 0; $i < count($_SESSION["meineDaten"]); $i++) {
 				echo "<tr>
-				<td>  ".$_SESSION["meineDaten"][$i][0]."  </td>
+				<td>  <img src=".$_SESSION["meineDaten"][$i][0]."/>  </td>
 				<td>  ".$_SESSION["meineDaten"][$i][1]."  </td>
 				<td>  ".$_SESSION["meineDaten"][$i][6]." </td>
 				<td>  ".$_SESSION["meineDaten"][$i][5]." </td>

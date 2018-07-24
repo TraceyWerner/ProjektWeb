@@ -11,10 +11,6 @@ if (mysqli_connect_errno()) {
 
 session_start();
 
-//if(!isset($_SESSION["zutatID"]))
-//	$_SESSION["zutatID"] = array();
-
-
 // *****************
 // rezept erstellen
 // *****************
@@ -44,15 +40,16 @@ function rezeptErstellen($bild,$name,$ersteller,$zubereitung,$Dauer,$schwierigke
 function zutaten($name, $einheit) {
 	global $mysqli;
 
+	if(!isset($_SESSION["zutatID"])) {
+		$_SESSION["zutatID"] = array();
+	}
 	// Checken, ob es Zutat schon gibt
 	$var = "SELECT zutatenID FROM zutaten WHERE name = '$name'";
-
+	
 	if ($result = $mysqli->query($var)) {
 		while($row = $result->fetch_array()) {
-			$_SESSION["zutatID"] = $row["zutatenID"];
-			//$_SESSION["zutatID"][$row["zutatenID"]] = array();
-			//$_SESSION["zutatID"][$row["zutatenID"]]["menge"] = $_SESSION["menge"];
-			//$_SESSION["zutatID"][$row["zutatenID"]]["einheit"] = $_REQUEST["Einheit"];
+			$_SESSION["zutatID"] = array();
+			$_SESSION["zutatID"][] = $row["zutatenID"];
 			return true;
 		}
 	}
@@ -63,7 +60,7 @@ function zutaten($name, $einheit) {
  	if ($result = $mysqli->query($zutaten)) {
  		if($ergebnis = $mysqli->query($var)) {
 			while($row = $ergebnis->fetch_array()) {
-				$_SESSION["zutatID"]= $row["zutatenID"];
+				$_SESSION["zutatID"][]= $row["zutatenID"];
 				return true;
 			}
 		}
@@ -101,11 +98,10 @@ function kategorie($rezept,$kateg) {
 	}
 	return false;
 }
-echo "Request: <pre>";
-var_dump($_REQUEST);
-echo "</pre>Session<pre>";
-var_dump($_SESSION);
-echo "</pre>";
+
+//echo "</pre>Session<pre>";
+//var_dump($_SESSION["zutatID"]);
+//echo "</pre>";
 
 
 //main
@@ -113,13 +109,9 @@ $knopf = $_REQUEST["knopf"];
 if ($knopf == "zutat") {
 	$_SESSION["menge"] = $_REQUEST["Menge"];
 	$_SESSION['auswahl'] = $_REQUEST["Einheit"];
-	$Z = array();
-	// Benötigten Zutaten einfügen in array
-	//if ($auswahl=="gr"){
-		if(zutaten($_REQUEST["NameZ"], $_SESSION['auswahl'])) {
-			$Z[] = $_SESSION["zutatID"];
-			include("rezeptErstellenWeiter.php");
-		}
+	if(zutaten($_REQUEST["NameZ"], $_SESSION['auswahl'])) {
+		include("rezeptErstellenWeiter.php");
+	}
 }
 // rezept erstellen mit Arrayzutaten
 if($knopf == "rezept") {
@@ -127,13 +119,12 @@ if($knopf == "rezept") {
 	$schwer = $_REQUEST["schwer"];
 	if(rezeptErstellen($_REQUEST["bild"],$_REQUEST["Rname"],$_SESSION["name"],$_REQUEST["Zubereitung"],$_REQUEST["Dauer"],$schwer)) {
 		if(kategorie($_SESSION["RezeptID"], $_SESSION["KategorieID"])) {
-			if(rezeptHatZutat($_SESSION["RezeptID"], $_SESSION["zutatID"], $_SESSION["menge"])) {
-				include("startseite_pers.php");
+			for($i = 0; $i < count($_SESSION["zutatID"]); $i++) {
+				if(rezeptHatZutat($_SESSION["RezeptID"], $_SESSION["zutatID"][$i], $_SESSION["menge"])) {
+				
+				}
 			}
-			else {
-				echo "DOOF";
-				ECHO $_SESSION["RezeptID"]," ", $_SESSION["zutatID"]," ", $_SESSION["menge"];
-			}
+			include("startseite_pers.php");
 		}
 	}
 }
